@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <!--
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:background="@drawable/title_red_bg" >
 
         <TextView
@@ -15,8 +16,15 @@
             android:layout_centerInParent="true"
             android:text="首页新闻"
             android:textColor="#fff"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
     </RelativeLayout>
+    -->
+
+    <com.viewpagerindicator.TabPageIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2000" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_news"

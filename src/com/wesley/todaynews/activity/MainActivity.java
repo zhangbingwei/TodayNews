@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Toast;
 
 import com.wesley.todaynews.R;
 import com.wesley.todaynews.pager.BasePager;
@@ -97,6 +99,12 @@ public class MainActivity extends Activity {
 
 	}
 
+	/**
+	 * 内容ViewPager的适配器
+	 * 
+	 * @author zhangbingwei
+	 * 
+	 */
 	class ContentAdapter extends PagerAdapter {
 
 		@Override
@@ -120,6 +128,39 @@ public class MainActivity extends Activity {
 		@Override
 		public void destroyItem(View container, int position, Object object) {
 			((ViewPager) container).removeView((View) object);
+		}
+	}
+
+	private long exitTime = 0;
+
+	/**
+	 * 重写返回键功能，实现连按两次退出App
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			// 按返回键的时候让新闻页面的页签回到第一个页签位置
+			NewsPager newsPager = (NewsPager) mPagerList.get(0);
+			if (newsPager.vpNews.getCurrentItem() == 0) {
+				exit();
+			} else {
+				newsPager.mIndicator.setCurrentItem(0);
+			}
+
+			return false;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	public void exit() {
+		if (System.currentTimeMillis() - exitTime > 2000) {
+			Toast.makeText(getApplicationContext(), "再按一次返回退出",
+					Toast.LENGTH_SHORT).show();
+			exitTime = System.currentTimeMillis();
+		} else {
+			finish();
+			System.exit(0);
 		}
 	}
 

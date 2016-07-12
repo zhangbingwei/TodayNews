@@ -8,13 +8,15 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.viewpagerindicator.TabPageIndicator;
 import com.wesley.todaynews.R;
 
 public class NewsPager extends BasePager {
 
 	private View newsView;// View对象
-	private ViewPager vpNews; // 首页新闻下面嵌入的ViewPager对象
+	public ViewPager vpNews; // 首页新闻下面嵌入的ViewPager对象
 	private ArrayList<TabNewsPager> newsPagerList;// 页签集合
+	public TabPageIndicator mIndicator;// 头部页签对象
 
 	private String[] tabTitle = new String[] { "头条", "社会", "国内", "国际", "娱乐",
 			"体育", "军事", "科技", "财经", "时尚" };
@@ -27,6 +29,9 @@ public class NewsPager extends BasePager {
 	public View initViews() {
 		newsView = View.inflate(mActivity, R.layout.activity_news, null);
 		vpNews = (ViewPager) newsView.findViewById(R.id.vp_news);
+
+		mIndicator = (TabPageIndicator) newsView.findViewById(R.id.indicator);
+
 		return newsView;
 	}
 
@@ -35,12 +40,15 @@ public class NewsPager extends BasePager {
 	public void initData() {
 		newsPagerList = new ArrayList<TabNewsPager>();
 		for (int i = 0; i < tabTitle.length; i++) {
-			TabNewsPager pager = new TabNewsPager(mActivity, tabTitle[i]);
+			TabNewsPager pager = new TabNewsPager(mActivity, i);
 			newsPagerList.add(pager);
 		}
 
 		vpNews.setAdapter(new NewsPagerAdapter());
+		mIndicator.setViewPager(vpNews);// 将ViewPager和Indicator关联起来，必须在ViewPager设置完Adapter以后才能调用
 
+		// 当从其他的页面回到新闻页的时候，页头标签重新定位到第一个页签
+		mIndicator.setCurrentItem(0);
 	}
 
 	/**
@@ -50,6 +58,11 @@ public class NewsPager extends BasePager {
 	 * 
 	 */
 	class NewsPagerAdapter extends PagerAdapter {
+
+		@Override
+		public CharSequence getPageTitle(int position) {
+			return tabTitle[position];
+		}
 
 		@Override
 		public int getCount() {
