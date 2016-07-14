@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -231,9 +232,24 @@ public class TabNewsPager extends BasePager {
 		// 自动轮播条显示
 		if (mHandler == null) {
 			mHandler = new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
 
+					int currentItem = vpTopNews.getCurrentItem();
+
+					if (currentItem < dataTopList.size() - 1) {
+						currentItem++;
+					} else {
+						currentItem = 0;
+					}
+
+					vpTopNews.setCurrentItem(currentItem);// 切换到下一个页面
+					mHandler.sendEmptyMessageDelayed(0, 3000);// 继续延时3秒发消息,形成死循环
+				}
 			};
 		}
+
+		mHandler.sendEmptyMessageDelayed(0, 3000);// 延时3秒后发消息
 
 	}
 
