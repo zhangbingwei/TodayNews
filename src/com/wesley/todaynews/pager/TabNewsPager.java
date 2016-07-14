@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -29,6 +31,7 @@ import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.wesley.todaynews.R;
 import com.wesley.todaynews.activity.NewsDetailActivity;
+import com.wesley.todaynews.db.TodayNewsDB;
 import com.wesley.todaynews.domain.NewsData;
 import com.wesley.todaynews.domain.NewsData.NewsTabData;
 import com.wesley.todaynews.global.GlobalConstants;
@@ -53,6 +56,12 @@ public class TabNewsPager extends BasePager {
 	private TextView tvTopTitle;
 	private CirclePageIndicator mIndicator;
 
+	private TodayNewsDB mTodayNewsDB;// 数据库
+
+	private TabNewsAdapter newsAdapter;// 新闻列表适配器
+
+	private Handler mHandler;
+
 	public TabNewsPager(Activity activity, int position) {
 		super(activity);
 		type = typeList[position];
@@ -71,6 +80,8 @@ public class TabNewsPager extends BasePager {
 		tvTopTitle = (TextView) topNewsView.findViewById(R.id.tv_top_title);
 		mIndicator = (CirclePageIndicator) topNewsView
 				.findViewById(R.id.indicator);
+
+		mTodayNewsDB = TodayNewsDB.getInstance(mActivity);
 
 		// 设置下拉刷新监听
 		lvTabNews.setOnRefreshListener(new OnRefreshListener() {
@@ -95,6 +106,7 @@ public class TabNewsPager extends BasePager {
 	public void initData() {
 		url = GlobalConstants.getURL(type);
 		getDataFromServer();
+
 		// 给ListView设置点击事件，跳到新闻详情页
 		lvTabNews.setOnItemClickListener(new OnItemClickListener() {
 
@@ -102,14 +114,34 @@ public class TabNewsPager extends BasePager {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 
-				// 在这里记录已经阅读新闻
+				NewsTabData newsTabData = dataList.get(position);
 
 				// 跳转到新闻详情页，把新闻链接url传递过去
 				Intent intent = new Intent(mActivity, NewsDetailActivity.class);
-				intent.putExtra("newsUrl", dataList.get(position).url);// 因为加了两个个HeaderView，所以位置要减1
+				intent.putExtra("newsUrl", newsTabData.url);
+				intent.putExtra("newsTitle", newsTabData.title);
+				intent.putExtra("newsSource", newsTabData.author_name);
+				intent.putExtra("newsImage", newsTabData.thumbnail_pic_s);
+				intent.putExtra("newsDate", newsTabData.date);
 				mActivity.startActivity(intent);
+
+				// 在这里记录已经阅读新闻
+				if (!mTodayNewsDB.loadAllReadURL().contains(newsTabData.url)) {
+					mTodayNewsDB.saveReadURL(newsTabData.url);
+				}
+
+				// newsAdapter.notifyDataSetChanged();
+				changeReadState(view);// 实现局部界面刷新, 这个view就是被点击的item布局对象
 			}
 		});
+	}
+
+	/**
+	 * 改变已读新闻的颜色
+	 */
+	private void changeReadState(View view) {
+		TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
+		tvTitle.setTextColor(Color.GRAY);
 	}
 
 	/**
@@ -148,8 +180,10 @@ public class TabNewsPager extends BasePager {
 		NewsData newsData = gson.fromJson(result, NewsData.class);
 
 		dataList = newsData.result.data;
+		newsAdapter = new TabNewsAdapter();
+
 		if (dataList != null) {
-			lvTabNews.setAdapter(new TabNewsAdapter());
+			lvTabNews.setAdapter(newsAdapter);
 		}
 
 		if (type == typeList[0]) {
@@ -192,7 +226,13 @@ public class TabNewsPager extends BasePager {
 
 				}
 			});
+		}
 
+		// 自动轮播条显示
+		if (mHandler == null) {
+			mHandler = new Handler() {
+
+			};
 		}
 
 	}
@@ -251,6 +291,12 @@ public class TabNewsPager extends BasePager {
 			NewsTabData item = getItem(position);
 			holder.tvTitle.setText(item.title);
 			holder.tvDate.setText(item.date);
+
+			if (mTodayNewsDB.loadAllReadURL().contains(item.url)) {
+				holder.tvTitle.setTextColor(Color.GRAY);
+			} else {
+				holder.tvTitle.setTextColor(Color.BLACK);
+			}
 
 			if (!TextUtils.isEmpty(item.author_name)) {
 				holder.tvFrom.setText(item.author_name);

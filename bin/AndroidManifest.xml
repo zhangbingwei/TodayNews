@@ -27,6 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.NewsDetailActivity" />
+        <activity android:name=".activity.FavouriteActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.WeatherActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.NewsSearchActivity" />
+        <activity android:name=".activity.SearchNewsDetailActivity" />
     </application>
 
 </manifest>

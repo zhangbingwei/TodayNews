@@ -4,24 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_red_bg" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="组图新闻"
-            android:textColor="#fff"
-            android:textSize="22sp" />
-    </RelativeLayout>
+        android:layout_height="45dp"
+        android:background="#a000"
+        android:gravity="center"
+        android:text="组图新闻"
+        android:textColor="#fff"
+        android:textSize="20sp" />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
         android:background="@drawable/view1" />
 
 </LinearLayout>

@@ -313,6 +313,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_title_indicator_selected_color=0x7f05000e;
         public static final int default_title_indicator_text_color=0x7f05000f;
         public static final int default_underline_indicator_selected_color=0x7f050010;
+        public static final int list_view_bg=0x7f050011;
         public static final int vpi__background_holo_dark=0x7f050000;
         public static final int vpi__background_holo_light=0x7f050001;
         public static final int vpi__bright_foreground_disabled_holo_dark=0x7f050004;
@@ -321,8 +322,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int vpi__bright_foreground_holo_light=0x7f050003;
         public static final int vpi__bright_foreground_inverse_holo_dark=0x7f050006;
         public static final int vpi__bright_foreground_inverse_holo_light=0x7f050007;
-        public static final int vpi__dark_theme=0x7f050011;
-        public static final int vpi__light_theme=0x7f050012;
+        public static final int vpi__dark_theme=0x7f050012;
+        public static final int vpi__light_theme=0x7f050013;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -348,75 +349,143 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_title_indicator_top_padding=0x7f08000c;
     }
     public static final class drawable {
-        public static final int bottom_tab_bg=0x7f020000;
-        public static final int btn_back_selector=0x7f020001;
-        public static final int btn_share_selector=0x7f020002;
-        public static final int btn_size_selector=0x7f020003;
-        public static final int custom_progress=0x7f020004;
-        public static final int govaffairs=0x7f020005;
-        public static final int govaffairs_press=0x7f020006;
-        public static final int home=0x7f020007;
-        public static final int home_press=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int listview_headview_red_arrow=0x7f02000a;
-        public static final int news_pic_default=0x7f02000b;
-        public static final int news_radio_selector=0x7f02000c;
-        public static final int news_tab_item_bg_select=0x7f02000d;
-        public static final int night_video_shareicon=0x7f02000e;
-        public static final int night_video_shareiconpress=0x7f02000f;
-        public static final int photos_radio_selector=0x7f020010;
-        public static final int refresh_custom_progress=0x7f020011;
-        public static final int setting=0x7f020012;
-        public static final int setting_press=0x7f020013;
-        public static final int settings_radio_selector=0x7f020014;
-        public static final int settings_text_selector=0x7f020015;
-        public static final int text_color_selector=0x7f020016;
-        public static final int text_size=0x7f020017;
-        public static final int text_size_press=0x7f020018;
-        public static final int title_red_bg=0x7f020019;
-        public static final int view1=0x7f02001a;
-        public static final int view2=0x7f02001b;
-        public static final int vpi__tab_indicator=0x7f02001c;
-        public static final int vpi__tab_selected_focused_holo=0x7f02001d;
-        public static final int vpi__tab_selected_holo=0x7f02001e;
-        public static final int vpi__tab_selected_pressed_holo=0x7f02001f;
-        public static final int vpi__tab_text_color_indicator=0x7f020020;
-        public static final int vpi__tab_unselected_focused_holo=0x7f020021;
-        public static final int vpi__tab_unselected_holo=0x7f020022;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f020023;
-        public static final int widget_left=0x7f020024;
-        public static final int widget_left_press=0x7f020025;
+        public static final int bottom=0x7f020000;
+        public static final int bottom_tab_bg=0x7f020001;
+        public static final int btn_back_selector=0x7f020002;
+        public static final int btn_check_off=0x7f020003;
+        public static final int btn_check_off_pressed=0x7f020004;
+        public static final int btn_check_off_selected=0x7f020005;
+        public static final int btn_check_on=0x7f020006;
+        public static final int btn_check_on_pressed=0x7f020007;
+        public static final int btn_check_on_selected=0x7f020008;
+        public static final int btn_setting_selector=0x7f020009;
+        public static final int btn_share_selector=0x7f02000a;
+        public static final int btn_size_selector=0x7f02000b;
+        public static final int button2=0x7f02000c;
+        public static final int button2_down=0x7f02000d;
+        public static final int button2_over=0x7f02000e;
+        public static final int custom_progress=0x7f02000f;
+        public static final int default_bg=0x7f020010;
+        public static final int govaffairs=0x7f020011;
+        public static final int govaffairs_press=0x7f020012;
+        public static final int home=0x7f020013;
+        public static final int home_press=0x7f020014;
+        public static final int ic_launcher=0x7f020015;
+        public static final int icon=0x7f020016;
+        public static final int input_over=0x7f020017;
+        public static final int left_menu_night=0x7f020018;
+        public static final int list_view_item_bg=0x7f020019;
+        public static final int listview_headview_red_arrow=0x7f02001a;
+        public static final int login_back=0x7f02001b;
+        public static final int login_bg=0x7f02001c;
+        public static final int login_input=0x7f02001d;
+        public static final int me=0x7f02001e;
+        public static final int more_select=0x7f02001f;
+        public static final int news_pic_default=0x7f020020;
+        public static final int news_radio_selector=0x7f020021;
+        public static final int news_tab_item_bg_select=0x7f020022;
+        public static final int night_video_shareicon=0x7f020023;
+        public static final int night_video_shareiconpress=0x7f020024;
+        public static final int option_normal=0x7f020025;
+        public static final int option_selected=0x7f020026;
+        public static final int photos_radio_selector=0x7f020027;
+        public static final int qq_btn_check=0x7f020028;
+        public static final int qq_edit_login=0x7f020029;
+        public static final int refresh_custom_progress=0x7f02002a;
+        public static final int save=0x7f02002b;
+        public static final int save_press=0x7f02002c;
+        public static final int search=0x7f02002d;
+        public static final int setting=0x7f02002e;
+        public static final int setting_press=0x7f02002f;
+        public static final int settings_radio_selector=0x7f020030;
+        public static final int settings_text_selector=0x7f020031;
+        public static final int text_color_selector=0x7f020032;
+        public static final int text_register_selector=0x7f020033;
+        public static final int text_size=0x7f020034;
+        public static final int text_size_press=0x7f020035;
+        public static final int title_red_bg=0x7f020036;
+        public static final int view1=0x7f020037;
+        public static final int view2=0x7f020038;
+        public static final int vpi__tab_indicator=0x7f020039;
+        public static final int vpi__tab_selected_focused_holo=0x7f02003a;
+        public static final int vpi__tab_selected_holo=0x7f02003b;
+        public static final int vpi__tab_selected_pressed_holo=0x7f02003c;
+        public static final int vpi__tab_text_color_indicator=0x7f02003d;
+        public static final int vpi__tab_unselected_focused_holo=0x7f02003e;
+        public static final int vpi__tab_unselected_holo=0x7f02003f;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f020040;
+        public static final int widget_left=0x7f020041;
+        public static final int widget_left_press=0x7f020042;
     }
     public static final class id {
-        public static final int action_settings=0x7f04001c;
+        public static final int ImageButton02=0x7f040011;
+        public static final int LinearLayout01=0x7f04000c;
+        public static final int RelativeLayout02=0x7f04000d;
+        public static final int TableLayout01=0x7f040016;
+        public static final int TextView01=0x7f040010;
+        public static final int TextView02=0x7f040013;
+        public static final int action_settings=0x7f040043;
         public static final int bottom=0x7f040003;
+        public static final int bt_login=0x7f04000a;
+        public static final int btn_register=0x7f040028;
+        public static final int et_content=0x7f04002a;
+        public static final int et_password=0x7f040008;
+        public static final int et_password_confirm=0x7f040009;
+        public static final int et_sure=0x7f040026;
+        public static final int et_username=0x7f040007;
+        public static final int faceImg=0x7f04000f;
         public static final int fl_content=0x7f040006;
-        public static final int ib_back=0x7f040010;
-        public static final int ib_share=0x7f040012;
-        public static final int ib_size=0x7f040011;
-        public static final int indicator=0x7f04000c;
-        public static final int iv_arr=0x7f04001a;
-        public static final int iv_photo=0x7f040017;
-        public static final int lv_tab_news=0x7f040014;
+        public static final int ib_back=0x7f040022;
+        public static final int ib_favourite=0x7f040024;
+        public static final int ib_share=0x7f040025;
+        public static final int ib_size=0x7f040023;
+        public static final int indicator=0x7f04001e;
+        public static final int iv_arr=0x7f040042;
+        public static final int iv_photo=0x7f04003d;
+        public static final int iv_search=0x7f040029;
+        public static final int login_btn_login=0x7f040015;
+        public static final int login_cb_openvibra=0x7f040018;
+        public static final int login_cb_savepwd=0x7f040014;
+        public static final int login_cb_visible=0x7f040017;
+        public static final int login_edit_account=0x7f04000e;
+        public static final int login_edit_pwd=0x7f040012;
+        public static final int lv_content=0x7f04002b;
+        public static final int lv_favourite=0x7f04000b;
+        public static final int lv_tab_news=0x7f040034;
         public static final int none=0x7f040000;
-        public static final int pb_progress=0x7f04000e;
-        public static final int rb_news=0x7f040009;
-        public static final int rb_photos=0x7f04000a;
-        public static final int rb_settings=0x7f04000b;
-        public static final int rg_group=0x7f040008;
+        public static final int pb_progress=0x7f040020;
+        public static final int rb_news=0x7f04001b;
+        public static final int rb_photos=0x7f04001c;
+        public static final int rb_settings=0x7f04001d;
+        public static final int rg_group=0x7f04001a;
         public static final int top=0x7f040004;
         public static final int triangle=0x7f040001;
-        public static final int tv_date=0x7f040019;
-        public static final int tv_from=0x7f040018;
-        public static final int tv_safe=0x7f040013;
-        public static final int tv_time=0x7f04001b;
+        public static final int tv_about=0x7f040031;
+        public static final int tv_content=0x7f04003f;
+        public static final int tv_date=0x7f040037;
+        public static final int tv_dress=0x7f04003c;
+        public static final int tv_exe=0x7f04003b;
+        public static final int tv_favourite=0x7f04002d;
+        public static final int tv_from=0x7f04003e;
+        public static final int tv_login=0x7f04002c;
+        public static final int tv_news=0x7f04002e;
+        public static final int tv_safe=0x7f040030;
+        public static final int tv_source=0x7f040040;
+        public static final int tv_sure=0x7f040027;
+        public static final int tv_temp=0x7f040038;
+        public static final int tv_time=0x7f040041;
         public static final int tv_title=0x7f040005;
-        public static final int tv_top_title=0x7f040016;
+        public static final int tv_top_title=0x7f040036;
+        public static final int tv_travel=0x7f04003a;
+        public static final int tv_username=0x7f040032;
+        public static final int tv_weather=0x7f04002f;
+        public static final int tv_week=0x7f040033;
+        public static final int tv_wind=0x7f040039;
         public static final int underline=0x7f040002;
-        public static final int vp_content=0x7f040007;
-        public static final int vp_news=0x7f04000d;
-        public static final int vp_top_news=0x7f040015;
-        public static final int wv_news_detail=0x7f04000f;
+        public static final int vp_content=0x7f040019;
+        public static final int vp_news=0x7f04001f;
+        public static final int vp_top_news=0x7f040035;
+        public static final int wv_news_detail=0x7f040021;
     }
     public static final class integer {
         public static final int default_circle_indicator_orientation=0x7f070000;
@@ -426,17 +495,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_underline_indicator_fade_length=0x7f070004;
     }
     public static final class layout {
-        public static final int activity_base_pager=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_news=0x7f030002;
-        public static final int activity_news_detail=0x7f030003;
-        public static final int activity_photos=0x7f030004;
-        public static final int activity_settings=0x7f030005;
-        public static final int activity_tab_news=0x7f030006;
-        public static final int activity_tab_news_top=0x7f030007;
-        public static final int item_tab_news=0x7f030008;
-        public static final int refresh_footer=0x7f030009;
-        public static final int refresh_header=0x7f03000a;
+        public static final int about_me=0x7f030000;
+        public static final int activity_base_pager=0x7f030001;
+        public static final int activity_change_pass=0x7f030002;
+        public static final int activity_favourite=0x7f030003;
+        public static final int activity_login=0x7f030004;
+        public static final int activity_main=0x7f030005;
+        public static final int activity_news=0x7f030006;
+        public static final int activity_news_detail=0x7f030007;
+        public static final int activity_news_search_detail=0x7f030008;
+        public static final int activity_photos=0x7f030009;
+        public static final int activity_register=0x7f03000a;
+        public static final int activity_search_news=0x7f03000b;
+        public static final int activity_settings=0x7f03000c;
+        public static final int activity_tab_news=0x7f03000d;
+        public static final int activity_tab_news_top=0x7f03000e;
+        public static final int activity_weather=0x7f03000f;
+        public static final int item_fav_news=0x7f030010;
+        public static final int item_search_news=0x7f030011;
+        public static final int item_tab_news=0x7f030012;
+        public static final int refresh_footer=0x7f030013;
+        public static final int refresh_header=0x7f030014;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;
@@ -450,11 +529,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
+
         
 
         Base application theme for API 11+. This theme completely replaces
@@ -473,6 +556,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090006;
+        public static final int SettingTab=0x7f090007;
         public static final int TextAppearance_TabPageIndicator=0x7f090003;
         public static final int Theme_PageIndicatorDefaults=0x7f090000;
         public static final int Widget=0x7f090001;
