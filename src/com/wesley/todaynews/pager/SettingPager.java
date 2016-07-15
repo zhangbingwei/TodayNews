@@ -97,6 +97,7 @@ public class SettingPager extends BasePager {
 
 		tvWeek.setText(getDate() + "  " + getWeek());
 
+		// 新闻搜索页面
 		tvNews.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -106,6 +107,7 @@ public class SettingPager extends BasePager {
 			}
 		});
 
+		// 弹出修改密码对话框
 		tvSafe.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -145,12 +147,14 @@ public class SettingPager extends BasePager {
 
 	}
 
+	// 获取星期
 	private String getWeek() {
 		Date date = new Date();
 		SimpleDateFormat dateFm = new SimpleDateFormat("EEEE");
 		return dateFm.format(date);
 	}
 
+	// 获取时间
 	private String getDate() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(new Date());

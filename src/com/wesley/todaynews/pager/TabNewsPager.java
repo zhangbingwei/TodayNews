@@ -36,6 +36,7 @@ import com.wesley.todaynews.db.TodayNewsDB;
 import com.wesley.todaynews.domain.NewsData;
 import com.wesley.todaynews.domain.NewsData.NewsTabData;
 import com.wesley.todaynews.global.GlobalConstants;
+import com.wesley.todaynews.utils.CacheUtils;
 import com.wesley.todaynews.view.RefreshListView;
 import com.wesley.todaynews.view.RefreshListView.OnRefreshListener;
 
@@ -106,7 +107,38 @@ public class TabNewsPager extends BasePager {
 	@Override
 	public void initData() {
 		url = GlobalConstants.getURL(type);
+
+		// 首先从缓存获取数据，减少用户的等待时间
+		String cache = CacheUtils.getCache(url, mActivity);
+		if (!TextUtils.isEmpty(cache)) {
+			parseData(cache, false);
+		}
+		// 不管缓存有没有数据，再从服务器获取
 		getDataFromServer();
+
+		if (dataTopList != null) {
+			// 自动轮播条显示
+			if (mHandler == null) {
+				mHandler = new Handler() {
+					@Override
+					public void handleMessage(Message msg) {
+
+						int currentItem = vpTopNews.getCurrentItem();
+
+						if (currentItem < dataTopList.size() - 1) {
+							currentItem++;
+						} else {
+							currentItem = 0;
+						}
+
+						vpTopNews.setCurrentItem(currentItem);// 切换到下一个页面
+						mHandler.sendEmptyMessageDelayed(0, 4000);// 继续延时4秒发消息,形成死循环
+					}
+				};
+			}
+
+			mHandler.sendEmptyMessageDelayed(0, 4000);// 延时4秒后发消息
+		}
 
 		// 给ListView设置点击事件，跳到新闻详情页
 		lvTabNews.setOnItemClickListener(new OnItemClickListener() {
@@ -158,6 +190,9 @@ public class TabNewsPager extends BasePager {
 				parseData(result, false);
 
 				lvTabNews.onRefreshComplete(true);
+
+				// 从服务器获取json后，设置缓存
+				CacheUtils.setCache(url, result, mActivity);
 			}
 
 			@Override
@@ -228,28 +263,6 @@ public class TabNewsPager extends BasePager {
 				}
 			});
 		}
-
-		// 自动轮播条显示
-		if (mHandler == null) {
-			mHandler = new Handler() {
-				@Override
-				public void handleMessage(Message msg) {
-
-					int currentItem = vpTopNews.getCurrentItem();
-
-					if (currentItem < dataTopList.size() - 1) {
-						currentItem++;
-					} else {
-						currentItem = 0;
-					}
-
-					vpTopNews.setCurrentItem(currentItem);// 切换到下一个页面
-					mHandler.sendEmptyMessageDelayed(0, 3000);// 继续延时3秒发消息,形成死循环
-				}
-			};
-		}
-
-		mHandler.sendEmptyMessageDelayed(0, 3000);// 延时3秒后发消息
 
 	}
 

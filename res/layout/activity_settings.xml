@@ -84,7 +84,7 @@
         style="@style/SettingTab"
         android:layout_marginBottom="2dp"
         android:background="#1000"
-        android:textColor="#8000"
+        android:textColor="#4000"
         android:textSize="14sp" />
 
 </LinearLayout>
