@@ -41,7 +41,7 @@
             android:drawableTop="@drawable/photos_radio_selector"
             android:gravity="center"
             android:padding="1dp"
-            android:text="组图"
+            android:text="精选"
             android:textColor="@drawable/text_color_selector"
             android:textSize="13sp" />
 

@@ -2,5 +2,7 @@
 <resources>
 
     <color name="list_view_bg">#1000</color>
+    <color name="photos_button_check">#fff</color>
+    <color name="photos_button">#00000000</color>
 
 </resources>

@@ -21,7 +21,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:text="        口袋新闻APP是一款实时获取新闻资讯类的手机客户端，包括头条、社会、国内、国际、军事、娱乐等十个条目，还可以及时搜索热点新闻，自带天气，是一款非常方便的口袋APP。郑重声明：全部数据来自于聚合数据!"
+        android:text="        口袋新闻APP是一款实时获取新闻资讯类的手机客户端，包括头条、社会、国内、国际、军事、娱乐、旅游、摄影等十多个条目，还可以及时搜索热点新闻，自带天气，是一款非常方便的口袋APP。声明：新闻数据来自于第三方!"
         android:textColor="#a000"
         android:textSize="20sp" />
 

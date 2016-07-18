@@ -374,7 +374,7 @@ public class TabNewsPager extends BasePager {
 		@Override
 		public Object instantiateItem(View container, int position) {
 			ImageView image = new ImageView(mActivity);
-			image.setScaleType(ScaleType.FIT_XY);
+			image.setScaleType(ScaleType.CENTER_CROP);
 
 			NewsTabData topNews = dataTopList.get(position);
 			final String topNewsUrl = topNews.url;

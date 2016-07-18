@@ -26,13 +26,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 新闻详情页面 -->
         <activity android:name=".activity.NewsDetailActivity" />
+        <!-- 收藏页面 -->
         <activity android:name=".activity.FavouriteActivity" />
+        <!-- 登录页面 -->
         <activity android:name=".activity.LoginActivity" />
+        <!-- 天气页面 -->
         <activity android:name=".activity.WeatherActivity" />
+        <!-- 注册页面 -->
         <activity android:name=".activity.RegisterActivity" />
+        <!-- 新闻搜索页面 -->
         <activity android:name=".activity.NewsSearchActivity" />
+        <!-- 新闻搜索详情页面 -->
         <activity android:name=".activity.SearchNewsDetailActivity" />
+        <!-- 组图新闻详情页 -->
+        <activity android:name=".activity.PhotosDetailActivity" />
     </application>
 
 </manifest>

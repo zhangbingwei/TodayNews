@@ -49,6 +49,7 @@ public class NewsPager extends BasePager {
 
 		// 当从其他的页面回到新闻页的时候，页头标签重新定位到第一个页签
 		mIndicator.setCurrentItem(0);
+
 	}
 
 	/**

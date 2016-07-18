@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -66,10 +67,15 @@ public class NewsSearchActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				String content = etContent.getText().toString();
-				String URL = SERVER + content;
+				if (TextUtils.isEmpty(content)) {
+					Toast.makeText(NewsSearchActivity.this, "关键词不能为空",
+							Toast.LENGTH_SHORT).show();
+				} else {
+					String URL = SERVER + content;
 
-				getDataFromServer(URL);
-				etContent.setText("");
+					getDataFromServer(URL);
+					etContent.setText("");
+				}
 
 			}
 		});

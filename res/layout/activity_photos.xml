@@ -2,22 +2,110 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical" >
 
-    <TextView
+    <RadioGroup
+        android:id="@+id/rg_photos"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#a000"
-        android:gravity="center"
-        android:text="组图新闻"
-        android:textColor="#fff"
-        android:textSize="20sp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
 
-    <ImageView
+        <RadioButton
+            android:id="@+id/rb_travel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="旅行"
+            android:textColor="@drawable/photos_text_color_selector" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#6fff" />
+
+        <RadioButton
+            android:id="@+id/rb_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="摄影"
+            android:textColor="@drawable/photos_text_color_selector" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#6fff" />
+
+        <RadioButton
+            android:id="@+id/rb_fashion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="时尚"
+            android:textColor="@drawable/photos_text_color_selector" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#6fff" />
+
+        <RadioButton
+            android:id="@+id/rb_beauty"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="购物"
+            android:textColor="@drawable/photos_text_color_selector" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#6fff" />
+
+        <RadioButton
+            android:id="@+id/rb_food"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="美食"
+            android:textColor="@drawable/photos_text_color_selector" />
+    </RadioGroup>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_photos"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:background="@drawable/view1" />
+        android:layout_height="wrap_content" >
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>
