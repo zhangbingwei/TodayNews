@@ -2,6 +2,8 @@ package com.wesley.todaynews.pager;
 
 import java.util.ArrayList;
 
+import org.apache.http.HttpException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -25,7 +27,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
@@ -197,7 +198,8 @@ public class TabNewsPager extends BasePager {
 
 			@Override
 			public void onFailure(HttpException error, String msg) {
-				Toast.makeText(mActivity, msg, Toast.LENGTH_SHORT).show();
+				Toast.makeText(mActivity, "获取网络数据失败，请重试", Toast.LENGTH_SHORT)
+						.show();
 				error.printStackTrace();
 
 				lvTabNews.onRefreshComplete(false);
@@ -216,9 +218,9 @@ public class TabNewsPager extends BasePager {
 		NewsData newsData = gson.fromJson(result, NewsData.class);
 
 		dataList = newsData.result.data;
-		newsAdapter = new TabNewsAdapter();
 
 		if (dataList != null) {
+			newsAdapter = new TabNewsAdapter();
 			lvTabNews.setAdapter(newsAdapter);
 		}
 

@@ -58,7 +58,11 @@ public class SettingPager extends BasePager {
 		// 从数据库获取账号展示
 		mNewsDB = TodayNewsDB.getInstance(mActivity);
 		String name = mNewsDB.getName();
-		tvUsername.setText("账号：" + name);
+		if (name != null) {
+			tvUsername.setText("账号：" + name);
+		} else {
+			tvUsername.setText("未登录");
+		}
 
 		return settingView;
 	}

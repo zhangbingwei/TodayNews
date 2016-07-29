@@ -3,8 +3,6 @@ package com.wesley.todaynews.pager;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
